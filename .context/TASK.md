@@ -19,6 +19,6 @@ Claude Code, OpenCode, and Codex.
 
 ## Status
 - Protocol and lightweight context structure are in place (see `DECISIONS.md`,
-  2026-08-27). Not yet committed at time of writing.
+  2026-08-27) and committed as `f6c35c2`, pushed to `origin/main`.
 - Pending: run a real multi-agent handoff cycle to validate the structure
   before adding any heavier layer.

@@ -1,0 +1,15 @@
+# Secrets and local environment
+.env
+.env.*
+!.env.example
+*.local
+
+# OS / editor temporary files
+.DS_Store
+Thumbs.db
+*.swp
+*~
+*.tmp
+
+# Obsidian local configuration
+.obsidian/

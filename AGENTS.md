@@ -1,85 +1,49 @@
 # AGENTS.md — afi_tech
 
+Common bootstrap for Hermes, Claude Code, OpenCode, and Codex.
+Keep this file small and high-signal. The detailed method is
+`.context/PROTOCOL.md` — the single source for the rules summarized here.
+
 ## Mission
 Build and maintain afi_tech through disciplined, evidence-based, token-efficient
-collaboration between Hermes, Claude Code, OpenCode, and Codex.
+collaboration between the agents above.
 
-## Agent roles
-- Hermes: orchestrator and coordinator.
-- Claude Code, OpenCode, Codex: specialized workers.
-- Agents do not inherit another agent's conversation unless explicitly provided.
+## Roles
+- Hermes: orchestrator and coordinator; owns the mutable snapshot files
+  (`.context/STATE.md`, `TASK.md`, `DECISIONS.md`, `CONVENTIONS.md`).
+- Claude Code, OpenCode, Codex: specialized workers. They add new immutable
+  files (handoffs, research), update `handoffs/latest.md` to point to their
+  handoff, and propose other snapshot changes in that handoff.
+- No agent inherits another agent's conversation unless it is explicitly given.
 
-## Context
-- Read the minimum relevant context before acting.
-- Do not transfer complete conversations when structured context is sufficient.
-- `.context/` contains operational state, decisions, research, and handoffs.
-- Use `.context/PROTOCOL.md` for the detailed collaboration and verification method.
+## Session bootstrap
+Read before acting (all small, all under `.context/`):
+- `STATE.md` — durable project state.
+- `TASK.md` — active task.
+- `DECISIONS.md` — standing decisions and what was deliberately rejected.
+- `CONVENTIONS.md` — how to write context and handoffs.
+- `handoffs/latest.md` — pointer to the newest handoff; then open the file it
+  names.
 
-## Truth and evidence
-- Never invent facts, sources, APIs, commands, capabilities, versions, results,
-  precedents, benchmarks, or implementation details.
-- Distinguish verified facts, observations, inferences, assumptions, hypotheses,
-  estimates, and unknowns.
-- Verify important claims before presenting them as facts.
-- If something cannot be verified, explicitly state the uncertainty.
+Consult `PROTOCOL.md` by section when doing significant work or when a rule is
+unclear. It is a reference, not required reading in full every session.
 
-## Technical verification
-For software, APIs, libraries, frameworks, protocols, or infrastructure:
-- Prefer current official documentation and specifications.
-- Verify the actual installed/versioned behavior when possible.
-- Check official source code and release notes when relevant.
-- Test important implementation or command claims when practical.
-- Never assume an API or feature exists from memory or an unverified example.
-
-## Research and industry practice
-For consequential technical, operational, business, security, or architectural
-decisions:
-- Investigate multiple relevant sources.
-- Prefer primary authoritative sources.
-- Investigate established real-world precedents in the relevant industry.
-- Compare practices of recognized organizations or major vendors when relevant.
-- Do not treat a large company's practice as automatically correct.
-- Search deliberately for contrary evidence, limitations, failure modes, and
-  competing approaches.
-
-## Critical iteration
-For significant work:
-- Produce a result.
-- Deliberately critique it for errors, assumptions, ambiguity, bias, omissions,
-  contradictions, unnecessary complexity, and risks.
-- Improve it.
-- Repeat until another deliberate iteration produces no relevant improvement.
-- Do not iterate mechanically when no meaningful review is possible.
-
-## Multi-agent convergence
-When independent analyses are useful:
-- Keep analyses independent before comparison when practical.
-- Compare convergence and disagreement.
-- Investigate the evidence and assumptions behind disagreements.
-- Never manufacture consensus.
-- Treat agreement as increased confidence, not proof.
-- Critically review the converged result and iterate until no relevant improvement
-  remains.
-- Preserve material disagreements and unresolved uncertainty.
-
-## Traceability
-Important conclusions and decisions must be reconstructable from evidence,
-reasoning, alternatives considered, verification, and remaining uncertainty.
-Prefer concise structured records over conversation transcripts.
-
-## Handoffs
-After significant work, leave a concise handoff containing:
-task, result, decisions, files changed, verification, risks/problems, remaining
-work, and recommended next step.
-
-## Security and Git
-- Never persist credentials, tokens, private keys, passwords, or secrets in context.
-- Work within the project repository unless explicitly authorized otherwise.
-- Verify changes before claiming completion.
-- Keep commits focused and descriptive.
-- Never rewrite history or force-push without explicit authorization.
+## Non-negotiable rules
+- Never fabricate facts, sources, APIs, commands, versions, results, benchmarks,
+  or precedents. Mark what is verified vs. inferred vs. unknown.
+- Verify load-bearing context against the actual repo (`git status`, files,
+  code) before relying on it. If context conflicts with the repo, trust the repo
+  and flag the stale context — do not act on it silently.
+- Source-of-truth order: (1) explicit user decisions, (2) verified repo state,
+  (3) authoritative technical/domain sources, (4) documented project decisions
+  and conventions, (5) verified history, (6) inference.
+- Git is the single source of truth for repository and code history.
+- Never persist credentials, tokens, keys, or secrets in any tracked file.
+- Never rewrite git history or force-push without explicit authorization.
+- After significant work, leave a handoff (`PROTOCOL.md` §15) and update the
+  snapshot files that no longer match reality.
 
 ## Completion
-A plausible first result is not sufficient for significant work. Completion
-requires verification, deliberate critical review, relevant improvement, and
-clear reporting of material uncertainty or unresolved disagreement.
+A plausible first draft is not done. Significant work needs verification, one
+deliberate critical-review pass, and explicit reporting of remaining
+uncertainty.

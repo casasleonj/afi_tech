@@ -16,3 +16,9 @@ Claude Code, OpenCode, and Codex.
 - Compare independent analyses and verify convergence.
 - Preserve uncertainty and material disagreement.
 - Keep secrets out of persistent context.
+
+## Status
+- Protocol and lightweight context structure are in place (see `DECISIONS.md`,
+  2026-08-27). Not yet committed at time of writing.
+- Pending: run a real multi-agent handoff cycle to validate the structure
+  before adding any heavier layer.

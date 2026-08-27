@@ -33,5 +33,8 @@
   it (new pointer block + a line prepended to the list). This is the one
   snapshot file a worker edits directly.
 - Workers otherwise only add new immutable files (handoffs, research).
+- Workers may directly edit ordinary project documentation such as `README.md`,
+  provided the change is small, within the current task scope, and recorded in
+  the handoff. Hermes retains ownership of the mutable snapshot files above.
 - Git is the single source of truth. Resolve any file-vs-repo conflict in favor
   of the repo and flag the stale file rather than acting on it silently.

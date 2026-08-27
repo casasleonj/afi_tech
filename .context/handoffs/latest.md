@@ -3,13 +3,12 @@
 This file is a pointer, not a handoff. Open the file named below for detail.
 
 - **Newest handoff:** `.context/handoffs/2026-08-27_claude-snapshot-sync.md`
-- **Written against:** HEAD `f6c35c2` (pushed to `origin/main`).
-- **Status:** Lightweight context architecture is committed (`f6c35c2`) and
-  pushed to `origin/main`. Working tree otherwise clean. The stale snapshots
-  (`TASK.md`, this pointer) have been corrected to match; those edits and this
-  handoff are still uncommitted, awaiting Hermes.
-- **Next step:** Hermes commits the snapshot-sync edits, then coordinates a real
-  multi-agent handoff cycle (OpenCode / Codex) to validate the structure.
+- **Written against:** HEAD `d1e6e2a` (pushed to `origin/main`).
+- **Status:** Lightweight context architecture and the stale snapshot
+  corrections are committed (`d1e6e2a`) and pushed to `origin/main`. Working
+  tree is clean.
+- **Next step:** Hermes coordinates a real multi-agent handoff cycle (OpenCode /
+  Codex) to validate the structure.
 
 ## Handoffs, newest first
 - 2026-08-27 · claude · snapshot-sync ·

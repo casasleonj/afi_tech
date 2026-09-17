@@ -1,12 +1,24 @@
 # Current State
 
 ## Project
-afi_tech. Early phase: the shared agent-context system is being built before any
-product code. The repository currently contains only context files and a README.
+afi_tech es el repositorio canónico y activo del sistema multiagente. El
+entorno anterior dejó de existir; el entorno actual se construye
+progresivamente y debe reflejarse en este repositorio.
 
 ## Repository
-git@github.com:casasleonj/afi_tech.git — default branch `main`.
+`https://github.com/casasleonj/afi_tech.git` — default branch `main`.
 Git is the single source of truth for repository and code history.
+
+## Architecture authority
+- `docs/architecture/HERMES_CONTEXTO_MAESTRO_v3.0.md` is the architectural
+  authority.
+- `docs/architecture/HERMES_INSTRUCCION_MAESTRA_AUTONOMA_v2.0.md` governs
+  execution and yields to the architectural authority on conflict.
+- The authority documents are preserved user-provided design inputs. Their
+  statements about a Hostinger VPS or partial implementation are historical or
+  target-design context, not verified facts about the new runtime.
+- Runtime facts are evidenced in dated audit files and handoffs; do not infer
+  them from this durable snapshot.
 
 ## Context architecture (agreed, lightweight)
 - `AGENTS.md` (root): small common bootstrap. Optional `CLAUDE.md` symlink for
@@ -18,12 +30,14 @@ Git is the single source of truth for repository and code history.
   to the newest one.
 - `.context/research/`: versioned analysis and evidence.
 - Obsidian may later open this repo as a read-only view for durable human notes.
-  No separate vault, no MCP layer, no enforcement tooling for now
-  (`DECISIONS.md`).
+  No separate vault or MCP layer is active. The repository does include the
+  deliberately minimal `scripts/verify-context.sh` validation gate and its CI
+  workflow (`DECISIONS.md`).
 
 ## Current phase
-Validate the context and handoff protocol in real multi-agent use before adding
-any heavier layer.
+Establish a reproducible baseline for the new environment, correct stale
+context, and then advance capability-by-capability through the approved cycle:
+inspect → implement/configure → test → measure → persist → Git/PR/CI.
 
 ## Out of scope for this file
 Ephemeral runtime facts — agent availability, rate limits, auth status, whether

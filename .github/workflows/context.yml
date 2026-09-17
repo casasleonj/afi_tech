@@ -1,0 +1,20 @@
+name: context-contract
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - name: Verify context contract
+        run: bash scripts/verify-context.sh HEAD^ HEAD

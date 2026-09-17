@@ -1,10 +1,15 @@
 # Active Task
 
-Design and validate a shared context and handoff protocol for Hermes,
-Claude Code, OpenCode, and Codex.
+Build the new multiagent environment progressively, with `afi_tech` as the
+canonical active repository for its intention, architecture, protocols, state,
+decisions, scripts, reproducible configuration, and evidence.
 
 ## Requirements
 - Preserve continuity across agents and sessions.
+- Close each significant advance as: inspect environment → implement/configure
+  → test → measure → persist in `afi_tech` → Git/PR/CI → continue.
+- Do not create a second repository unless a concrete, documented need proves
+  that the canonical repository cannot serve the purpose.
 - Avoid transferring complete conversations.
 - Minimize unnecessary context and token usage.
 - Never invent facts or unsupported technical details.
@@ -18,9 +23,9 @@ Claude Code, OpenCode, and Codex.
 - Keep secrets out of persistent context.
 
 ## Status
-- Protocol and lightweight context structure are in place (see `DECISIONS.md`,
-  2026-08-27) and committed as `f6c35c2`, pushed to `origin/main`.
-- The initial OpenCode → Claude Code handoff cycle has been executed and
-  independently reviewed. Codex is unavailable in the current environment,
-  so no Codex turn is required for this validation before adding any heavier
-  layer.
+- The former environment is retired and must not be treated as current runtime
+  evidence.
+- The initial baseline audit for the new accessible execution surface is
+  recorded in `docs/audits/2026-09-17_initial-environment-baseline.md`.
+- Next capability gate: audit Hermes, OpenCode and Claude Code in the actual
+  target environment before configuring or installing any of them.

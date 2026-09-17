@@ -2,12 +2,16 @@
 
 This file is a pointer, not a handoff. Open the file named below for detail.
 
-- **Newest handoff:** `.context/handoffs/2026-08-27_opencode-stale-pointer-fix.md`
-- **Written against:** HEAD `fdb9ea7` (also at `origin/main`); this handoff + pointer uncommitted by instruction.
-- **Status:** Ciclo multi-agente consolidado en `fdb9ea7` y publicado en `origin/main`; puntero stale corregido y alineado con HEAD.
-- **Next step:** Hermes valida el puntero corregido y decide commit del handoff + pointer; no se requiere acción de workers.
+- **Newest handoff:** `.context/handoffs/2026-09-17_hermes-initial-environment-baseline.md`
+- **Status:** `afi_tech` queda establecido como repositorio canónico activo; el
+  baseline del entorno nuevo accesible y la corrección del puntero se registran
+  en el handoff indicado.
+- **Next step:** auditar Hermes, OpenCode y Claude Code en el entorno objetivo
+  real antes de instalar o configurar componentes.
 
 ## Handoffs, newest first
+- 2026-09-17 · hermes · initial-environment-baseline ·
+  `2026-09-17_hermes-initial-environment-baseline.md`
 - 2026-08-27 · opencode · stale-pointer-fix ·
   `2026-08-27_opencode-stale-pointer-fix.md`
 - 2026-08-27 · claude · revision-opencode ·

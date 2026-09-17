@@ -2,14 +2,16 @@
 
 This file is a pointer, not a handoff. Open the file named below for detail.
 
-- **Newest handoff:** `.context/handoffs/2026-09-17_hermes-initial-environment-baseline.md`
-- **Status:** `afi_tech` queda establecido como repositorio canónico activo; el
-  baseline del entorno nuevo accesible y la corrección del puntero se registran
-  en el handoff indicado.
-- **Next step:** auditar Hermes, OpenCode y Claude Code en el entorno objetivo
-  real antes de instalar o configurar componentes.
+- **Newest handoff:** `.context/handoffs/2026-09-17_hermes-git-delivery-automation.md`
+- **Status:** la rama de baseline se publicó con una deploy key y el repositorio
+  incorpora un workflow de PR draft con privilegios mínimos, pendiente de
+  verificación remota.
+- **Next step:** verificar la ejecución de auto-PR y CI en GitHub; después,
+  auditar Hermes, OpenCode y Claude Code en el entorno objetivo real.
 
 ## Handoffs, newest first
+- 2026-09-17 · hermes · git-delivery-automation ·
+  `2026-09-17_hermes-git-delivery-automation.md`
 - 2026-09-17 · hermes · initial-environment-baseline ·
   `2026-09-17_hermes-initial-environment-baseline.md`
 - 2026-08-27 · opencode · stale-pointer-fix ·

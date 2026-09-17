@@ -27,5 +27,10 @@ decisions, scripts, reproducible configuration, and evidence.
   evidence.
 - The initial baseline audit for the new accessible execution surface is
   recorded in `docs/audits/2026-09-17_initial-environment-baseline.md`.
-- Next capability gate: audit Hermes, OpenCode and Claude Code in the actual
-  target environment before configuring or installing any of them.
+- `TEMPORARY_BRIDGE`: a draft-PR workflow and branch-push CI are added and must
+  be verified by a controlled two-push test before they become accepted delivery
+  controls.
+- The bridge is removed after an upstream GitHub MCP integration is validated
+  in the real Hermes runtime against its documented retirement conditions.
+- Next environment capability gate: audit Hermes, OpenCode and Claude Code in
+  the actual target environment before configuring or installing any of them.

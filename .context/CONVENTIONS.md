@@ -36,6 +36,11 @@
 - `docs/architecture/` contains byte-for-byte user-provided authority documents.
   Its Markdown hard-break whitespace is an explicit, narrow exception to
   `git diff --check`; the validation script excludes only this path.
+- `TEMPORARY_BRIDGE` work branches use only: `agent/`, `feature/`, `fix/`,
+  `docs/` or `chore/`. A matching push is expected to create only a draft PR;
+  it never authorizes code checkout/write, review/approval bypass or merge.
+  The branch-push CI run is the automated validation signal; an additional
+  PR-event run may need approval.
 
 ## Ownership
 - Hermes owns the mutable snapshot: `STATE.md`, `TASK.md`, `DECISIONS.md`,

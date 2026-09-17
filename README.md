@@ -20,6 +20,18 @@ demostrada.
 `inspect environment → implement/configure → test → measure → persist in
 afi_tech → Git/PR/CI → continue`
 
+`TEMPORARY_BRIDGE`: las ramas de trabajo con prefijos `agent/`, `feature/`,
+`fix/`, `docs/` o `chore/` crean un PR *draft* automáticamente mediante GitHub
+Actions.
+El contrato CI corre contra el push de la rama; una ejecución `pull_request`
+creada por el token de GitHub puede requerir aprobación humana. La revisión y
+merge siguen siendo gates explícitos.
+
+Este bridge debe retirarse cuando el runtime real de Hermes tenga una
+integración GitHub segura, validada y de mínimo privilegio que pueda crear y
+consultar PRs, leer checks/CI y reviews/comentarios. Antes de retirarlo se
+comparan ambas alternativas y se elimina la Action si no añade valor.
+
 ## Continuidad
 
 - Lee `AGENTS.md` antes de actuar.

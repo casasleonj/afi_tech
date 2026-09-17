@@ -5,6 +5,11 @@ on:
   push:
     branches:
       - main
+      - 'agent/**'
+      - 'feature/**'
+      - 'fix/**'
+      - 'docs/**'
+      - 'chore/**'
 
 permissions:
   contents: read
@@ -18,3 +23,9 @@ jobs:
           fetch-depth: 2
       - name: Verify context contract
         run: bash scripts/verify-context.sh HEAD^ HEAD
+      - name: Verify automatic PR contract
+        run: bash scripts/verify-auto-pr.sh
+      - name: Test automatic PR policy verifier
+        run: bash scripts/test-verify-auto-pr.sh
+      - name: Verify GitHub delivery architecture contract
+        run: bash scripts/verify-github-delivery-docs.sh

@@ -24,6 +24,38 @@
 - The authority documents live under `docs/architecture/`; the architectural
   document prevails over execution guidance if they conflict.
 
+## Git delivery automation (2026-09-17)
+- **Status: `TEMPORARY_BRIDGE`.** A GitHub Actions workflow creates a *draft*
+  PR only when an `agent/`, `feature/`, `fix/`, `docs/` or `chore/` branch is
+  pushed. It closes the verified gap where the deploy SSH key can push Git but
+  cannot call GitHub's PR API. `main`, `dependabot/**` and all unlisted branch
+  types are excluded.
+- The workflow receives only `contents: read` and `pull-requests: write`, uses
+  GitHub's ephemeral `github.token`, and never receives a PAT, deploy key, or
+  repository secret.
+- The workflow may create a PR only; review, CI status, readiness and merge
+  remain separate explicit gates. It must not auto-merge, approve/review PRs,
+  check out or modify code, use `pull_request_target`, or change `main`.
+- `context-contract` runs for matching branch pushes, which is the automated CI
+  acceptance signal. A `pull_request` event induced by `github.token` may wait
+  for maintainer approval; it is supplementary and never a blocking implicit
+  approval path.
+- Per-branch workflow concurrency plus duplicate-PR recovery makes the
+  list/create sequence idempotent across rapid pushes and races with a manual
+  PR creation.
+- `github/github-mcp-server` is the preferred upstream interactive integration
+  for direct PR and Actions operations. Its local adoption is deferred until
+  the active Hermes host is accessible for configuration and OAuth; this Docker
+  execution surface has no `hermes` CLI/configuration to modify.
+- **Retirement condition:** evaluate the official GitHub MCP in the real Hermes
+  runtime with non-interactive authentication (prefer GitHub App or short-lived
+  credentials), limited toolsets, minimum permissions and read-only/lockdown
+  modes where appropriate. It must demonstrably create/query PRs, read
+  CI/status checks and read reviews/comments. Compare it against this bridge;
+  remove the Action through a reviewed PR if it no longer adds value.
+- Final GitHub delivery remains `NOT_READY`. A passing bridge test produces
+  only `READY_WITH_LIMITATIONS`; it cannot close this gate.
+
 ## Quality methodology
 - Significant work requires deliberate self-critique and iterative improvement.
 - Important decisions require evidence and relevant real-world precedent.

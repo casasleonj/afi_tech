@@ -39,6 +39,24 @@ Establish a reproducible baseline for the new environment, correct stale
 context, and then advance capability-by-capability through the approved cycle:
 inspect → implement/configure → test → measure → persist → Git/PR/CI.
 
+## Git delivery
+- `TEMPORARY_BRIDGE`: a repository-owned workflow creates a draft PR only when
+  an `agent/`, `feature/`, `fix/`, `docs/` or `chore/` branch is pushed. It uses
+  only GitHub's ephemeral workflow token and does not check out or modify code,
+  merge, review/approve, modify secrets, or bypass review/CI. The
+  context-contract CI runs on the branch push; an additional PR-event run can
+  require maintainer approval when the PR was created by `github.token`.
+- The official GitHub MCP remains the preferred interactive API integration,
+  but cannot be configured from this Docker execution surface because it lacks
+  the active Hermes CLI/configuration. The workflow provides the least-privilege
+  delivery path until that host-access gate is resolved. It is removed after a
+  measured comparison confirms the real Hermes integration provides equivalent
+  PR/CI/review capabilities with minimum privilege.
+- Final architecture, runtime runbook, E2E gates and merge protocol are versioned
+  in `docs/design/GITHUB_DELIVERY_ARCHITECTURE.md`,
+  `docs/runbooks/HERMES_GITHUB_RUNTIME.md`, `docs/evals/GITHUB_DELIVERY_E2E.md`
+  and `docs/protocols/PROTO_GIT.md`.
+
 ## Out of scope for this file
 Ephemeral runtime facts — agent availability, rate limits, auth status, whether
 the working tree is clean or pushed — do NOT belong here. They are point-in-time

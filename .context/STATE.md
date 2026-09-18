@@ -57,6 +57,14 @@ inspect → implement/configure → test → measure → persist → Git/PR/CI.
   `docs/runbooks/HERMES_GITHUB_RUNTIME.md`, `docs/evals/GITHUB_DELIVERY_E2E.md`
   and `docs/protocols/PROTO_GIT.md`.
 
+## Runtime topology
+- **Verified topology A:** Hermes runs on the host; Docker is an isolated
+  terminal sandbox. Evidence: `docs/audits/2026-09-17_hermes-runtime-topology.md`.
+- The first `TEMPORARY_BRIDGE` push produced zero PRs; branch-push context CI
+  succeeded while auto-PR failed. The bridge is not accepted until its
+  controlled two-push test passes; see
+  `docs/audits/2026-09-17_auto-pr-bridge-test.md`.
+
 ## Out of scope for this file
 Ephemeral runtime facts — agent availability, rate limits, auth status, whether
 the working tree is clean or pushed — do NOT belong here. They are point-in-time

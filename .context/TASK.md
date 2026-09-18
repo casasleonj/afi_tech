@@ -32,5 +32,9 @@ decisions, scripts, reproducible configuration, and evidence.
   controls.
 - The bridge is removed after an upstream GitHub MCP integration is validated
   in the real Hermes runtime against its documented retirement conditions.
+- The first bridge push failed to create a PR. Repeat the controlled test only
+  after the repository owner enables the explicitly approved Actions setting.
+- The real-host audit/install gate remains pending a secure host command channel;
+  do not treat sandbox files as Hermes runtime configuration.
 - Next environment capability gate: audit Hermes, OpenCode and Claude Code in
   the actual target environment before configuring or installing any of them.

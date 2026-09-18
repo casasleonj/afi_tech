@@ -62,9 +62,13 @@
   configuration belongs only to the host `HERMES_HOME` once real-host evidence
   identifies it; sandbox `~/.hermes` paths are non-canonical for this purpose.
 - Real host configuration is `/home/cristof/.hermes/config.yaml`; host `.env`
-  remains secret scope. Native MCP supports OAuth and no server is configured.
-  Use the official remote GitHub MCP there, never forward its credential into
-  Docker without a separately demonstrated need.
+  remains secret scope. Native MCP supports OAuth and no server is enabled.
+  Never forward a GitHub credential into the terminal Docker sandbox without a
+  separately demonstrated need.
+- GitHub's hosted MCP rejects Hermes generic dynamic OAuth registration. Do not
+  retry it blindly. The primary candidate is GitHub's official local stdio MCP
+  authenticated as a GitHub App installed only on `casasleonj/afi_tech`, with
+  its host private key mounted read-only solely into that MCP child.
 
 ## Quality methodology
 - Significant work requires deliberate self-critique and iterative improvement.

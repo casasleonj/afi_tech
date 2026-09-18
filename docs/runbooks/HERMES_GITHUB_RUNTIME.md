@@ -17,18 +17,27 @@ must not print `.env`, token values, credential files or secret-bearing config.
 ## 2. Official MCP evaluation
 
 1. Run `hermes mcp list` and `hermes mcp --help` on the installed release.
-   Use the official GitHub catalog/install flow only when that release exposes
-   it; otherwise use the supported `hermes mcp add`, `hermes mcp test` and
-   `hermes mcp configure` flow. Record the exact supported command as evidence.
-2. Install/enable it only on the real runtime through that verified Hermes
-   command/configuration path.
-3. Select only repository/branch read, PR create/read, CI/status read and
-   review/comment read operations.
-4. Complete OAuth or GitHub App credential authorization outside chat. Prefer a
-   GitHub App installation token or another short-lived renewable credential.
-5. Restart/reload Hermes only when the real runtime's documented procedure says
-   it is required.
-6. Use `hermes mcp list` and a controlled repository probe to verify discovery.
+2. Do **not** use generic remote OAuth against
+   `https://api.githubcopilot.com/mcp/`: GitHub rejects dynamic client
+   registration. If a disabled failed entry exists, remove it before continuing.
+3. Prefer GitHub's official local stdio server with a GitHub App installation.
+   Before any image pull or configuration change, verify host Docker access and
+   inspect the official image/version and command contract.
+4. Create/install a dedicated GitHub App only after human approval. Scope it to
+   `casasleonj/afi_tech`; request metadata/read-only content, PR read/write,
+   Actions/check/status read, and issue/comment read only. Exclude repository
+   administration, secrets, deployments, workflows, contents write, merge and
+   review submission.
+5. Keep the App private key in a host-only `0600` secret file. Mount it
+   read-only only into the official stdio MCP child. Do not put it in Git,
+   Telegram, command arguments, `afi_tech`, or the terminal sandbox.
+6. Add and test it only through the real Hermes host command/configuration
+   path. Use discovery then `hermes mcp configure github` to select only
+   repository/branch read, PR create/read, CI/status read and review/comment
+   read operations.
+7. Restart/reload Hermes only when the real runtime's documented procedure says
+   it is required and only after the MCP connection/configuration test passes.
+8. Use `hermes mcp list` and a controlled repository probe to verify discovery.
 
 Do not copy PATs, device codes, OAuth tokens or private keys into Telegram,
 commands, `afi_tech`, handoffs or audit evidence.

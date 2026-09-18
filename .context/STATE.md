@@ -67,8 +67,13 @@ inspect → implement/configure → test → measure → persist → Git/PR/CI.
 - Real-host inventory is now verified in
   `docs/audits/2026-09-18_real-hermes-runtime-inventory.md`: host `Epic`, user
   `cristof`, user-systemd gateway, host `HERMES_HOME` at
-  `/home/cristof/.hermes`, and Docker terminal backend. MCP is supported and
-  presently unconfigured.
+  `/home/cristof/.hermes`, and Docker terminal backend. MCP is supported; no
+  MCP server is currently enabled.
+- The hosted GitHub MCP's generic OAuth attempt was rejected by GitHub dynamic
+  client registration and saved disabled. It is not an OAuth retry candidate;
+  the preferred next evaluation is the official local stdio server with a
+  GitHub App installation. See
+  `docs/audits/2026-09-18_github-mcp-remote-oauth-evaluation.md`.
 
 ## Out of scope for this file
 Ephemeral runtime facts — agent availability, rate limits, auth status, whether

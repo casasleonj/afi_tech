@@ -2,13 +2,16 @@
 
 This file is a pointer, not a handoff. Open the file named below for detail.
 
-- **Newest handoff:** `.context/handoffs/2026-09-18_hermes-real-runtime-inventory.md`
-- **Status:** runtime host y Docker sandbox verificados; MCP nativo soportado y
-  vacío. Bridge `READY_WITH_LIMITATIONS`; GitHub final sigue `NOT_READY`.
-- **Next step:** añadir GitHub MCP oficial con OAuth en el host, probar conexión,
-  limitar toolset y realizar reload controlado antes de probar Telegram.
+- **Newest handoff:** `.context/handoffs/2026-09-18_github-remote-oauth-rejected.md`
+- **Status:** runtime host y Docker sandbox verificados; OAuth remoto genérico
+  de GitHub fue rechazado y quedó deshabilitado. Bridge
+  `READY_WITH_LIMITATIONS`; GitHub final sigue `NOT_READY`.
+- **Next step:** retirar la entrada fallida y obtener aprobación para evaluar el
+  MCP oficial local con una GitHub App de mínimo privilegio.
 
 ## Handoffs, newest first
+- 2026-09-18 · hermes · github-remote-oauth-rejected ·
+  `2026-09-18_github-remote-oauth-rejected.md`
 - 2026-09-18 · hermes · real-runtime-inventory ·
   `2026-09-18_hermes-real-runtime-inventory.md`
 - 2026-09-17 · hermes · bridge-ready-with-limitations ·

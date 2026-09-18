@@ -25,8 +25,19 @@ architecture and cannot satisfy direct Hermes PR, CI or review operations.
 
 ## Final integration candidate
 
-Evaluate GitHub's official `github/github-mcp-server` **inside the real Hermes
-runtime**, before any custom integration. Enable only toolsets required to:
+Evaluate GitHub's official `github/github-mcp-server` **from the real Hermes
+runtime**, before any custom integration. The preferred candidate is its local
+stdio server authenticated as a GitHub App installation: it is a child of the
+host Hermes process and refreshes short-lived installation tokens. This does not
+mean the terminal Docker sandbox is the MCP runtime.
+
+GitHub's hosted endpoint is `https://api.githubcopilot.com/mcp/`, but generic
+dynamic OAuth registration is rejected. It is therefore not an install path for
+the current Hermes configuration unless a pre-registered OAuth App is supplied
+and its client configuration is separately validated. Do not repeatedly retry
+the generic `--auth oauth` flow.
+
+Enable only toolsets required to:
 
 1. read repository metadata and branches;
 2. create and read pull requests;
@@ -38,17 +49,18 @@ merge, delete, or arbitrary code-write tools for the evaluation.
 
 ## Authentication policy
 
-1. Prefer a GitHub App installation token or other short-lived credential that
-   can be renewed non-interactively by the real runtime.
-2. Use OAuth only when the official MCP's supported flow and credential storage
-   are verified for the runtime.
+1. Prefer a GitHub App installation token that the official local MCP server
+   renews non-interactively in its host-process child.
+2. Use hosted OAuth only with a deliberate, pre-registered GitHub OAuth App,
+   pinned callback details and validated Hermes OAuth client settings.
 3. Reject a permanent personal PAT by default. Any exception needs a documented
    scope, expiry, rotation owner, rollback and approval.
 4. Secrets remain outside `afi_tech`; only names, required permissions and
    non-sensitive evidence are versioned.
 
-Compatibility between the official MCP and a GitHub App token is **unverified**
-until it is tested in the real runtime. Do not claim support from this design.
+Compatibility between the official local MCP and a GitHub App token is the
+officially documented candidate, but remains **unverified in this runtime**
+until the host test passes. Do not claim it works from this design.
 
 ## Minimum target permissions
 

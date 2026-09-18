@@ -26,7 +26,8 @@ not under the sandbox's `/workspace` or `/root`.
 - Gateway: `hermes-gateway.service`, enabled and active as user systemd service;
   main PID `8660` runs the Hermes Python module.
 - Terminal backend: `docker`.
-- `mcp_servers`: empty; `hermes mcp list` reported no configured servers.
+- Initial `mcp_servers`: empty; a later hosted-GitHub OAuth attempt saved one
+  disabled failed entry, documented separately. No MCP server is enabled.
 - Native MCP CLI supports HTTP/SSE URLs, stdio, OAuth/header auth, `mcp test`
   and connection timeout configuration.
 
@@ -38,6 +39,11 @@ MCP configuration is validated and the exact unit change is inspected.
 
 ## Next controlled action
 
-Add the official remote GitHub MCP to the host with OAuth, then test discovery
-before selecting the minimal toolset or reloading the gateway. Authentication is
-performed outside chat; no token, device code or `.env` content is recorded.
+The generic remote GitHub OAuth route was tested and rejected because GitHub
+does not accept dynamic client registration. See
+`docs/audits/2026-09-18_github-mcp-remote-oauth-evaluation.md`.
+
+After removal of the disabled failed entry, evaluate the official local stdio
+GitHub MCP with a GitHub App installation on the host. Authentication and the
+private key remain outside chat; no token, device code or `.env` content is
+recorded.

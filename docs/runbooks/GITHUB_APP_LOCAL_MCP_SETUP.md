@@ -1,6 +1,6 @@
 # Runbook — GitHub App + Official Local MCP
 
-**Status:** `AUTHORIZED_NOT_CREATED`
+**Status:** `HOST_DOCKER_VERIFIED; APP_NOT_CREATED`
 
 This procedure creates a dedicated GitHub App and evaluates GitHub's official
 local stdio MCP server from the **host Hermes runtime**. It never configures an
@@ -27,6 +27,10 @@ docker info --format 'root={{.DockerRootDir}}'
 
 Do not pull an image or create an MCP entry until this output shows that the
 `cristof` user can reach the Docker daemon.
+
+**Evidence:** host Docker access passed (`/usr/bin/docker`, client/server
+`28.5.1`, root `/var/lib/docker`); see
+`docs/audits/2026-09-18_host-docker-capability.md`.
 
 ## 2. Create the dedicated GitHub App
 

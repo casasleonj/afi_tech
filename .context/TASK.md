@@ -41,5 +41,8 @@ decisions, scripts, reproducible configuration, and evidence.
   registration; remove the disabled entry. Next: evaluate the official local
   stdio GitHub MCP with a least-privilege GitHub App, then restrict its toolset
   before a controlled gateway reload and Telegram test.
+- Human authorization for that App/MCP evaluation is recorded. The immediate
+  gate is read-only host Docker capability discovery; setup details and rollback
+  are versioned in `docs/runbooks/GITHUB_APP_LOCAL_MCP_SETUP.md`.
 - Next environment capability gate: audit Hermes, OpenCode and Claude Code in
   the actual target environment before configuring or installing any of them.

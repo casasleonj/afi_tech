@@ -79,6 +79,9 @@ Excluded by default: administration, secrets, deployments, environments,
 repository settings, workflow writes, contents write through MCP, merge, review
 submission and approval.
 
+The exact GitHub App creation, host key storage, pinned-image and rollback
+procedure is versioned in `docs/runbooks/GITHUB_APP_LOCAL_MCP_SETUP.md`.
+
 ## Bridge comparison and retirement
 
 | Dimension | `TEMPORARY_BRIDGE` Action | Final Hermes + GitHub MCP |

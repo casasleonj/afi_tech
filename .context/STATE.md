@@ -60,9 +60,9 @@ inspect → implement/configure → test → measure → persist → Git/PR/CI.
 ## Runtime topology
 - **Verified topology A:** Hermes runs on the host; Docker is an isolated
   terminal sandbox. Evidence: `docs/audits/2026-09-17_hermes-runtime-topology.md`.
-- The first `TEMPORARY_BRIDGE` push produced zero PRs; branch-push context CI
-  succeeded while auto-PR failed. The bridge is not accepted until its
-  controlled two-push test passes; see
+- After the approved Actions setting was enabled, the controlled reuse test
+  produced exactly one Draft PR across two pushes with successful branch CI.
+  Bridge status is `READY_WITH_LIMITATIONS`; final GitHub stays `NOT_READY`; see
   `docs/audits/2026-09-17_auto-pr-bridge-test.md`.
 
 ## Out of scope for this file

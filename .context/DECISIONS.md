@@ -55,6 +55,9 @@
   remove the Action through a reviewed PR if it no longer adds value.
 - Final GitHub delivery remains `NOT_READY`. A passing bridge test produces
   only `READY_WITH_LIMITATIONS`; it cannot close this gate.
+- The bridge completed its controlled test: one Draft PR was retained across a
+  reuse push and branch-push CI succeeded. It is usable as
+  `READY_WITH_LIMITATIONS` only while `replacement_required: true` remains.
 - Runtime topology is **A**: Hermes host + Docker terminal sandbox. GitHub MCP
   configuration belongs only to the host `HERMES_HOME` once real-host evidence
   identifies it; sandbox `~/.hermes` paths are non-canonical for this purpose.

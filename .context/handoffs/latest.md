@@ -2,14 +2,16 @@
 
 This file is a pointer, not a handoff. Open the file named below for detail.
 
-- **Newest handoff:** `.context/handoffs/2026-09-17_hermes-runtime-topology-and-bridge-test.md`
-- **Status:** topología A demostrada; el primer test del bridge creó cero PRs y
-  queda bloqueado a la espera de una configuración de Actions explícitamente
-  aprobada. GitHub final sigue `NOT_READY`.
-- **Next step:** habilitar la política de Actions aprobada, completar la prueba
-  de dos pushes y obtener un canal seguro al host Hermes real para su auditoría.
+- **Newest handoff:** `.context/handoffs/2026-09-17_hermes-bridge-ready-with-limitations.md`
+- **Status:** topología A demostrada; bridge probado con un Draft PR reutilizado
+  tras dos pushes y CI de rama verde. Bridge `READY_WITH_LIMITATIONS`; GitHub
+  final sigue `NOT_READY`.
+- **Next step:** obtener un canal seguro al host Hermes real, auditarlo y
+  evaluar GitHub MCP oficial conforme al E2E versionado.
 
 ## Handoffs, newest first
+- 2026-09-17 · hermes · bridge-ready-with-limitations ·
+  `2026-09-17_hermes-bridge-ready-with-limitations.md`
 - 2026-09-17 · hermes · runtime-topology-and-bridge-test ·
   `2026-09-17_hermes-runtime-topology-and-bridge-test.md`
 - 2026-09-17 · hermes · git-delivery-automation ·

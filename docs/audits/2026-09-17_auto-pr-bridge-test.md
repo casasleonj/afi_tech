@@ -2,7 +2,7 @@
 
 **Date:** 2026-09-17
 **Branch:** `agent/auto-pr-bridge-probe-20260917`
-**Bridge status:** `TEMPORARY_BRIDGE`
+**Bridge status:** `READY_WITH_LIMITATIONS` / `TEMPORARY_BRIDGE`
 **Final capability:** `NOT_READY`
 
 ## First push
@@ -36,10 +36,22 @@ GitHub also created a `pull_request` run, `35310099863`, with conclusion
 `action_required`. This confirms that GitHub requires human approval for that
 PR-triggered run; branch-push CI remains the automated acceptance signal.
 
-The required idempotence check is still pending: the next non-sensitive push
-must prove that PR #2 remains the only open PR for this branch.
+The controlled reuse push at `161840115e51e28999f0be39b66e4df0d17e073f`
+proved idempotence:
+
+- open PR count remained exactly `1`;
+- PR #2 remained Draft and advanced to the new head commit;
+- auto-PR run `35310163639` succeeded without creating a duplicate;
+- branch-push context-contract run `35310163674` succeeded.
+
+Static contract and negative-fixture tests also prove that the bridge has only
+`contents: read` and `pull-requests: write`; it has no code checkout/write,
+merge, review/approval, secret/PAT or `pull_request_target` capability.
+
+The bridge is therefore usable only as `READY_WITH_LIMITATIONS`. It does not
+make final Hermes-to-GitHub delivery ready.
 
 ## Next action
 
-Push a non-sensitive third probe commit, then verify that PR #2 remains the
-only Draft PR for the branch and that branch-push CI succeeds again.
+Obtain a secure command channel to the real Hermes host, then perform the
+versioned official GitHub MCP audit and E2E evaluation.

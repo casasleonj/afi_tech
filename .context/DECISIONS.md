@@ -69,6 +69,9 @@
   retry it blindly. The primary candidate is GitHub's official local stdio MCP
   authenticated as a GitHub App installed only on `casasleonj/afi_tech`, with
   its host private key mounted read-only solely into that MCP child.
+- Keep the confirmed host Hermes installation and `terminal.backend: docker`.
+  The fact that sandbox commands cannot administer host MCP is expected
+  isolation, not evidence that Hermes is split or requires reinstallation.
 
 ## Quality methodology
 - Significant work requires deliberate self-critique and iterative improvement.

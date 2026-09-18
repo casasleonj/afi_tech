@@ -45,5 +45,9 @@ decisions, scripts, reproducible configuration, and evidence.
   host Docker capability gate passed. Next: create the repository-scoped App
   and protect its key; setup details and rollback are versioned in
   `docs/runbooks/GITHUB_APP_LOCAL_MCP_SETUP.md`.
+- Before any GitHub App key or MCP image setup, complete the secret-safe host
+  PID/environment probe documented in
+  `docs/audits/2026-09-18_new-installation-topology-reconstruction.md` to
+  close the topology evidence record.
 - Next environment capability gate: audit Hermes, OpenCode and Claude Code in
   the actual target environment before configuring or installing any of them.

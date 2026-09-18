@@ -74,6 +74,11 @@ inspect → implement/configure → test → measure → persist → Git/PR/CI.
   the preferred next evaluation is the official local stdio server with a
   GitHub App installation. See
   `docs/audits/2026-09-18_github-mcp-remote-oauth-evaluation.md`.
+- The current-environment installation reconstruction is recorded in
+  `docs/audits/2026-09-18_new-installation-topology-reconstruction.md`:
+  topology A is demonstrated, one active host Hermes gateway is evidenced, and
+  no Hermes reinstall is required. Docker's configured role is terminal
+  sandboxing, not the persistence/runtime layer for the Telegram gateway.
 
 ## Out of scope for this file
 Ephemeral runtime facts — agent availability, rate limits, auth status, whether

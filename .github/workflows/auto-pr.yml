@@ -1,0 +1,60 @@
+name: temporary-bridge-auto-pr
+
+on:
+  push:
+    branches:
+      - 'agent/**'
+      - 'feature/**'
+      - 'fix/**'
+      - 'docs/**'
+      - 'chore/**'
+
+permissions:
+  contents: read
+  pull-requests: write
+
+concurrency:
+  group: auto-pr-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  create:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+      HEAD_BRANCH: ${{ github.ref_name }}
+    steps:
+      - name: Create draft PR when none is open
+        shell: bash
+        run: |
+          set -euo pipefail
+          open_count=$(gh pr list \
+            --repo "$GH_REPO" \
+            --head "$HEAD_BRANCH" \
+            --base main \
+            --state open \
+            --json number \
+            --jq 'length')
+          if [[ "$open_count" == "0" ]]; then
+            if gh pr create \
+              --repo "$GH_REPO" \
+              --base main \
+              --head "$HEAD_BRANCH" \
+              --draft \
+              --title "chore: open $HEAD_BRANCH" \
+              --body "Automatically created after a branch push. Review, CI, and merge remain explicit gates."; then
+              exit 0
+            fi
+            open_count=$(gh pr list \
+              --repo "$GH_REPO" \
+              --head "$HEAD_BRANCH" \
+              --base main \
+              --state open \
+              --json number \
+              --jq 'length')
+            [[ "$open_count" != "0" ]] || exit 1
+            echo "An open pull request was created concurrently for $HEAD_BRANCH."
+          else
+            echo "An open pull request already exists for $HEAD_BRANCH."
+          fi

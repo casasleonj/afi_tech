@@ -22,8 +22,25 @@
   handoff, not by editing the old one.
 - Each handoff file contains all eight `PROTOCOL.md` §15 fields.
 - `handoffs/latest.md` is a mutable pointer to the newest handoff: its filename,
-  the repo HEAD it was written against, a one-line status, and the next step. It
-  is never a historical record and never the only copy of a handoff.
+  a one-line status, and the next step. It never claims a mutable exact Git HEAD,
+  is never a historical record, and is never the only copy of a handoff.
+
+## Environment evidence
+- Record non-secret inspection evidence in a dated `docs/audits/` file or an
+  immutable handoff. Mark every material statement as verified, inferred, or
+  unknown.
+- For significant work, preserve the closed delivery cycle: inspect →
+  implement/configure → test → measure → persist → Git/PR/CI.
+- A reproducibility script must have no undeclared runtime dependencies and must
+  be runnable locally before it is proposed for CI.
+- `docs/architecture/` contains byte-for-byte user-provided authority documents.
+  Its Markdown hard-break whitespace is an explicit, narrow exception to
+  `git diff --check`; the validation script excludes only this path.
+- `TEMPORARY_BRIDGE` work branches use only: `agent/`, `feature/`, `fix/`,
+  `docs/` or `chore/`. A matching push is expected to create only a draft PR;
+  it never authorizes code checkout/write, review/approval bypass or merge.
+  The branch-push CI run is the automated validation signal; an additional
+  PR-event run may need approval.
 
 ## Ownership
 - Hermes owns the mutable snapshot: `STATE.md`, `TASK.md`, `DECISIONS.md`,

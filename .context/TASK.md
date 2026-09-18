@@ -36,5 +36,8 @@ decisions, scripts, reproducible configuration, and evidence.
   `READY_WITH_LIMITATIONS`; it does not satisfy the final Hermes GitHub gate.
 - The real-host audit/install gate remains pending a secure host command channel;
   do not treat sandbox files as Hermes runtime configuration.
+- Host command access is now established through the operator. Next: add and
+  test the official GitHub MCP with OAuth in the host runtime, then restrict its
+  toolset before a controlled gateway reload and Telegram test.
 - Next environment capability gate: audit Hermes, OpenCode and Claude Code in
   the actual target environment before configuring or installing any of them.

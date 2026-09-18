@@ -64,6 +64,11 @@ inspect → implement/configure → test → measure → persist → Git/PR/CI.
   produced exactly one Draft PR across two pushes with successful branch CI.
   Bridge status is `READY_WITH_LIMITATIONS`; final GitHub stays `NOT_READY`; see
   `docs/audits/2026-09-17_auto-pr-bridge-test.md`.
+- Real-host inventory is now verified in
+  `docs/audits/2026-09-18_real-hermes-runtime-inventory.md`: host `Epic`, user
+  `cristof`, user-systemd gateway, host `HERMES_HOME` at
+  `/home/cristof/.hermes`, and Docker terminal backend. MCP is supported and
+  presently unconfigured.
 
 ## Out of scope for this file
 Ephemeral runtime facts — agent availability, rate limits, auth status, whether

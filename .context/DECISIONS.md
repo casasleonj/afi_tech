@@ -61,6 +61,10 @@
 - Runtime topology is **A**: Hermes host + Docker terminal sandbox. GitHub MCP
   configuration belongs only to the host `HERMES_HOME` once real-host evidence
   identifies it; sandbox `~/.hermes` paths are non-canonical for this purpose.
+- Real host configuration is `/home/cristof/.hermes/config.yaml`; host `.env`
+  remains secret scope. Native MCP supports OAuth and no server is configured.
+  Use the official remote GitHub MCP there, never forward its credential into
+  Docker without a separately demonstrated need.
 
 ## Quality methodology
 - Significant work requires deliberate self-critique and iterative improvement.

@@ -2,14 +2,15 @@
 
 This file is a pointer, not a handoff. Open the file named below for detail.
 
-- **Newest handoff:** `.context/handoffs/2026-09-17_hermes-bridge-ready-with-limitations.md`
-- **Status:** topología A demostrada; bridge probado con un Draft PR reutilizado
-  tras dos pushes y CI de rama verde. Bridge `READY_WITH_LIMITATIONS`; GitHub
-  final sigue `NOT_READY`.
-- **Next step:** obtener un canal seguro al host Hermes real, auditarlo y
-  evaluar GitHub MCP oficial conforme al E2E versionado.
+- **Newest handoff:** `.context/handoffs/2026-09-18_hermes-real-runtime-inventory.md`
+- **Status:** runtime host y Docker sandbox verificados; MCP nativo soportado y
+  vacío. Bridge `READY_WITH_LIMITATIONS`; GitHub final sigue `NOT_READY`.
+- **Next step:** añadir GitHub MCP oficial con OAuth en el host, probar conexión,
+  limitar toolset y realizar reload controlado antes de probar Telegram.
 
 ## Handoffs, newest first
+- 2026-09-18 · hermes · real-runtime-inventory ·
+  `2026-09-18_hermes-real-runtime-inventory.md`
 - 2026-09-17 · hermes · bridge-ready-with-limitations ·
   `2026-09-17_hermes-bridge-ready-with-limitations.md`
 - 2026-09-17 · hermes · runtime-topology-and-bridge-test ·

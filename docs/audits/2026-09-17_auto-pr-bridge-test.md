@@ -26,12 +26,20 @@ explicitly confirmed before treating the bridge as operational.
 
 ## Test state
 
-The required second push/idempotence check has not run because the first push
-created no PR to reuse. No claim is made that the bridge is operational.
+After the repository owner enabled the explicitly approved Actions setting, a
+new push at `676013f1eb61710eefd2dc54dd5247d56c7edbfa` produced exactly one
+Draft PR: [#2](https://github.com/casasleonj/afi_tech/pull/2). The bridge run
+`35310090686` succeeded and the branch-push `context-contract` run
+`35310090802` succeeded.
+
+GitHub also created a `pull_request` run, `35310099863`, with conclusion
+`action_required`. This confirms that GitHub requires human approval for that
+PR-triggered run; branch-push CI remains the automated acceptance signal.
+
+The required idempotence check is still pending: the next non-sensitive push
+must prove that PR #2 remains the only open PR for this branch.
 
 ## Next action
 
-After the repository owner enables the approved Actions workflow-permission
-setting, push a non-sensitive second probe commit, then verify exactly one
-Draft PR, its reused identity after the second push, branch-push CI, and any
-PR-event approval requirement.
+Push a non-sensitive third probe commit, then verify that PR #2 remains the
+only Draft PR for the branch and that branch-push CI succeeds again.
